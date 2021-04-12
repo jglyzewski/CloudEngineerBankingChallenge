@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudEngineerBankingChallenge.Api", "CloudEngineerBankingChallenge.Api\CloudEngineerBankingChallenge.Api.csproj", "{DA8E2464-FD98-436D-97E6-096D43B621B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudEngineerBankingChallenge.Core", "CloudEngineerBankingChallenge.Core\CloudEngineerBankingChallenge.Core.csproj", "{FFB6AC40-BF30-457A-8A44-A9A17AD9175B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudEngineerBankingChallenge.Infrastructure", "CloudEngineerBankingChallenge.Infrastructure\CloudEngineerBankingChallenge.Infrastructure.csproj", "{A1084561-90CC-4C54-8EE7-424FE4A314C7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{DA8E2464-FD98-436D-97E6-096D43B621B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA8E2464-FD98-436D-97E6-096D43B621B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA8E2464-FD98-436D-97E6-096D43B621B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB6AC40-BF30-457A-8A44-A9A17AD9175B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB6AC40-BF30-457A-8A44-A9A17AD9175B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB6AC40-BF30-457A-8A44-A9A17AD9175B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB6AC40-BF30-457A-8A44-A9A17AD9175B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1084561-90CC-4C54-8EE7-424FE4A314C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1084561-90CC-4C54-8EE7-424FE4A314C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1084561-90CC-4C54-8EE7-424FE4A314C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1084561-90CC-4C54-8EE7-424FE4A314C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
