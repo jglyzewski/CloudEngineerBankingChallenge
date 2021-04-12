@@ -12,6 +12,7 @@ namespace CloudEngineerBankingChallenge.Infrastructure.Services
         public LoanManager(IOptions<GeneralSettings> generalSettings)
         {
             _generalSettings = generalSettings;
+            ValidateGeneralSettings();
         }
 
         public decimal CalculateMonthlyCost(Loan loan)
@@ -20,12 +21,12 @@ namespace CloudEngineerBankingChallenge.Infrastructure.Services
             var rateOfInterest = interest / (Loan.MonthsPerYear * 100);
 
             // formula: loan amount = (interest rate * loan amount) / (1 - (1 + interest rate)^(number of payments * -1))
-            return Math.Round((decimal)rateOfInterest * loan.Amount / (1 - (decimal)Math.Pow(1 + rateOfInterest, loan.NumberOfPayments * -1)), 2);
+            return (decimal)rateOfInterest * loan.Amount / (1 - (decimal)Math.Pow(1 + rateOfInterest, loan.NumberOfPayments * -1));
         }
 
         public decimal CalculateTotalAmountPaidAsAdministrationFee(Loan loan)
         {
-            return Math.Round(LowestFee(_generalSettings.Value.AdministrationFeeMinPercent / 100 * loan.Amount), 2);
+            return LowestFee(_generalSettings.Value.AdministrationFeeMinPercent / 100 * loan.Amount);
 
             decimal LowestFee(decimal adminFeePercentAmount)
                 => adminFeePercentAmount < _generalSettings.Value.AdministrationFeeMinAmount
@@ -34,6 +35,24 @@ namespace CloudEngineerBankingChallenge.Infrastructure.Services
         }
 
         public decimal CalculateTotalAmountPaidAsInterestRate(Loan loan, decimal montlyCost)
-            => Math.Round(montlyCost * loan.NumberOfPayments - loan.Amount, 2);
+            => montlyCost * loan.NumberOfPayments - loan.Amount;
+
+        private void ValidateGeneralSettings()
+        {
+            if (_generalSettings?.Value?.AdministrationFeeMinPercent is null)
+            {
+                throw new ArgumentNullException(nameof(_generalSettings.Value.AdministrationFeeMinPercent));
+            }
+
+            if (_generalSettings?.Value?.AnnualInterestRatePercent is null)
+            {
+                throw new ArgumentNullException(nameof(_generalSettings.Value.AnnualInterestRatePercent));
+            }
+
+            if (_generalSettings?.Value?.AdministrationFeeMinAmount is null)
+            {
+                throw new ArgumentNullException(nameof(_generalSettings.Value.AdministrationFeeMinAmount));
+            }
+        }
     }
 }

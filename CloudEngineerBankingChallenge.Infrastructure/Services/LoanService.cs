@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Options;
-using CloudEngineerBankingChallenge.Core.Domain;
+﻿using CloudEngineerBankingChallenge.Core.Domain;
 using CloudEngineerBankingChallenge.Infrastructure.DTO;
 using System;
 
@@ -30,9 +29,9 @@ namespace CloudEngineerBankingChallenge.Infrastructure.Services
             return new LoanDto()
             {
                 Id = loan.Id,
-                MonthlyCost = montlyCost,
-                TotalAmountPaidAsAdministrationFee = totalInterestRate,
-                TotalAmountPaidAsInterestRate = totalAdministrationFee
+                MonthlyCost = Math.Round(montlyCost, 2),
+                TotalAmountPaidAsInterestRate = Math.Round(totalInterestRate, 2),
+                TotalAmountPaidAsAdministrationFee = Math.Round(totalAdministrationFee, 2)
             };
         }
     }
